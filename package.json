@@ -1,9 +1,8 @@
 {
-  "name": "hooperstyle-chat-card",
+  "name": "my-app",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mysitehooperstyle.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -43,7 +42,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.31.1",
+    "framer-motion": "^12.33.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.562.0",
     "next-themes": "^0.4.6",
@@ -68,7 +67,6 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
-    "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
     "kimi-plugin-inspect-react": "^1.0.3",
     "postcss": "^8.5.6",
