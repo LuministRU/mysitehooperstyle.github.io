@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# Hooper Style Chat Card
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивная визитка Python разработчика в стиле Эдварда Хоппера.
 
-Currently, two official plugins are available:
+## О проекте
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Чат-интерфейс с эффектами света и интерактивными элементами, созданный с использованием React, TypeScript, Tailwind CSS и Framer Motion.
 
-## React Compiler
+## Демо
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+[https://mysitehooperstyle.github.io](https://mysitehooperstyle.github.io)
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- shadcn/ui
+- Lucide React
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Установка и запуск
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Клонирование репозитория
+git clone https://github.com/mysitehooperstyle/mysitehooperstyle.github.io.git
+cd mysitehooperstyle.github.io
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Установка зависимостей
+npm install
+
+# Запуск в режиме разработки
+npm run dev
+
+# Сборка для продакшена
+npm run build
+
+# Предпросмотр продакшен сборки
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Деплой на GitHub Pages
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Автоматический деплой
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Установка зависимостей (первый раз)
+npm install
+
+# Деплой на GitHub Pages
+npm run deploy
 ```
+
+### Ручной деплой
+
+1. Соберите проект:
+```bash
+npm run build
+```
+
+2. Закоммитьте папку `dist` в ветку `gh-pages`:
+```bash
+git add dist -f
+git commit -m "Deploy to GitHub Pages"
+git subtree push --prefix dist origin gh-pages
+```
+
+### Настройка GitHub Pages
+
+1. Перейдите в настройки репозитория на GitHub
+2. В разделе **Pages** выберите:
+   - Source: Deploy from a branch
+   - Branch: gh-pages / (root)
+3. Нажмите **Save**
+
+## Структура проекта
+
+```
+├── src/
+│   ├── components/     # React компоненты
+│   │   ├── ChatContainer.tsx
+│   │   ├── ChatMessage.tsx
+│   │   ├── QuickReplies.tsx
+│   │   └── LightEffects.tsx
+│   ├── lib/           # Утилиты
+│   ├── hooks/         # React хуки
+│   └── App.tsx        # Главный компонент
+├── dist/              # Собранный проект
+├── public/            # Статические файлы
+└── package.json       # Зависимости и скрипты
+```
+
+## Лицензия
+
+MIT
