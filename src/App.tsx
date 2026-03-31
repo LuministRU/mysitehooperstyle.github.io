@@ -14,7 +14,7 @@ function App() {
         className="absolute inset-0 z-0"
       >
         <img
-          src="/hopper-bg.jpg"
+          src="./hopper-bg.jpg"
           alt="Background"
           className="w-full h-full object-cover"
         />
