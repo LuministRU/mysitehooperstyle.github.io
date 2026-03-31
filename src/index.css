@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 25% 8%;
+    --foreground: 40 20% 90%;
+    --card: 240 20% 12%;
+    --card-foreground: 40 20% 90%;
+    --popover: 240 20% 10%;
+    --popover-foreground: 40 20% 90%;
+    --primary: 30 70% 55%;
+    --primary-foreground: 240 25% 8%;
+    --secondary: 210 20% 35%;
+    --secondary-foreground: 40 20% 90%;
+    --muted: 240 15% 18%;
+    --muted-foreground: 40 10% 65%;
+    --accent: 200 60% 45%;
+    --accent-foreground: 40 20% 90%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 15% 20%;
+    --input: 240 15% 18%;
+    --ring: 30 70% 55%;
+    --radius: 1rem;
+    
+    /* Hopper Palette */
+    --hopper-warm-light: 30 80% 67%;
+    --hopper-cool-shadow: 210 20% 35%;
+    --hopper-deep-bg: 240 30% 10%;
+    --hopper-amber: 35 85% 60%;
+    --hopper-python: 210 55% 45%;
+    --hopper-gold: 30 50% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  }
+  
+  .warm-glow {
+    box-shadow: 
+      0 0 60px -15px hsl(var(--hopper-warm-light) / 0.3),
+      0 0 100px -30px hsl(var(--hopper-warm-light) / 0.2);
+  }
+  
+  .message-bot {
+    @apply bg-gradient-to-br from-white/10 to-white/5;
+    border-left: 3px solid hsl(var(--hopper-warm-light));
+  }
+  
+  .message-user {
+    @apply bg-gradient-to-br;
+    background-image: linear-gradient(to bottom right, hsl(210 55% 45% / 0.3), hsl(210 55% 45% / 0.15));
+    border-right: 3px solid hsl(210 55% 45%);
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 rounded-full bg-current;
+    animation: typing-bounce 1.4s infinite ease-in-out both;
+  }
+  
+  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+}
+
+@layer utilities {
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-amber-300 via-orange-400 to-amber-500 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-python {
+    @apply bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+}
+
+/* Animations */
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes light-beam {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-10%) rotate(-2deg);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(10%) rotate(2deg);
+  }
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px -5px hsl(var(--hopper-warm-light) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px -5px hsl(var(--hopper-warm-light) / 0.6);
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-light-beam {
+  animation: light-beam 15s ease-in-out infinite;
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hopper-warm-light) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--hopper-warm-light) / 0.5);
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--hopper-warm-light) / 0.3);
+  color: hsl(var(--foreground));
+}

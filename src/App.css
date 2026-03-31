@@ -1,0 +1,89 @@
+/* App-specific styles */
+
+/* Ensure full height */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Smooth transitions for all interactive elements */
+button, input {
+  transition: all 0.3s ease;
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(244, 162, 97, 0.5);
+  outline-offset: 2px;
+}
+
+/* Prevent text selection on decorative elements */
+.decorative {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Ensure proper z-index stacking */
+.glass-panel {
+  position: relative;
+  z-index: 1;
+}
+
+/* Message bubble enhancements */
+.message-bot,
+.message-user {
+  position: relative;
+  overflow: hidden;
+}
+
+.message-bot::before,
+.message-user::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* Code block styling */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244, 162, 97, 0.3) transparent;
+}
+
+pre::-webkit-scrollbar {
+  height: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(244, 162, 97, 0.3);
+  border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .glass-panel {
+    margin: 0 -0.5rem;
+    border-radius: 1.5rem;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
