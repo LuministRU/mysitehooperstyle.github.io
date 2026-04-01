@@ -5,7 +5,7 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/mysitehooperstyle.github.io/',
+  base: '/',
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {
