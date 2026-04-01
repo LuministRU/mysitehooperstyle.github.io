@@ -10,7 +10,7 @@ const experiences = [
     description: 'Разработка программного обеспечения для ракет и спутников',
   },
   {
-    period: '2022 — 2025',
+    period: '2022 — настоящее время',
     role: 'Python Backend Developer',
     company: 'Фриланс',
     description: 'Фриланс, разработка сложных web-сервисов, тг-ботов с ИИ',

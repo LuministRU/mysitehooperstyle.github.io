@@ -1,33 +1,15 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github, ArrowUpRight, Satellite, Radio, Globe } from 'lucide-react';
+import { ExternalLink, Music, ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Система телеметрии',
-    description: 'Обработка данных со спутников в реальном времени. Поддержка 50+ космических аппаратов, latency < 100ms.',
-    tags: ['FastAPI', 'Kafka', 'TimescaleDB', 'gRPC'],
-    metrics: { value: '50+', label: 'спутников' },
-    icon: Satellite,
-    link: '#',
-    github: '#',
-  },
-  {
-    title: 'Мониторинг полётов',
-    description: 'Веб-платформа для отслеживания космических миссий. Визуализация орбит, телеметрия, алерты.',
-    tags: ['Django', 'PostgreSQL', 'Redis', 'WebSocket'],
-    metrics: { value: '24/7', label: 'мониторинг' },
-    icon: Radio,
-    link: '#',
-    github: '#',
-  },
-  {
-    title: 'API спутниковых данных',
-    description: 'Доступ к изображениям Земли со спутников. 10K+ запросов/сек, интеграция с внешними сервисами.',
-    tags: ['FastAPI', 'MinIO', 'Elasticsearch', 'Docker'],
-    metrics: { value: '10K+', label: 'запросов/сек' },
-    icon: Globe,
-    link: '#',
+    title: 'Сеть ТСК "Велвет"',
+    description: 'Сайт для сети танцевально-спортивных клубов по России. Приём заявок, расписание, информация о филиалах.',
+    tags: ['Django', 'Python', 'PostgreSQL', 'React'],
+    metrics: { value: '10+', label: 'филиалов' },
+    icon: Music,
+    link: 'http://velvetsvoboda.ru/',
     github: '#',
   },
 ];
@@ -68,13 +50,13 @@ export function Projects() {
         >
           <div className="flex items-center gap-4 mb-4">
             <span className="w-16 h-px bg-purple-400/50" />
-            <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Проекты</span>
+            <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Коммерческие разработки</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-            Космические <span className="text-gradient-purple">разработки</span>
+            Коммерческие <span className="text-gradient-purple">разработки</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl">
-            Проекты для Роскосмоса и космической отрасли
+            Проекты для фирм и частных клиентов
           </p>
         </motion.div>
 
