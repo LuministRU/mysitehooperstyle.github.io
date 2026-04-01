@@ -55,7 +55,7 @@ export function Contact() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="contact-bg.jpg"
+          src="/contact-bg.jpg"
           alt="Space museum interior"
           className="w-full h-full object-cover opacity-40"
         />

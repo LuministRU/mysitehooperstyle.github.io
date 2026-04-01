@@ -26,7 +26,7 @@ export function Projects() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="projects-bg.jpg"
+          src="/projects-bg.jpg"
           alt="Satellite ground station"
           className="w-full h-full object-cover opacity-30"
         />

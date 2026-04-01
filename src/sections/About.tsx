@@ -35,7 +35,7 @@ export function About() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="about-bg.jpg"
+          src="/about-bg.jpg"
           alt="Observatory interior"
           className="w-full h-full object-cover opacity-40"
         />
