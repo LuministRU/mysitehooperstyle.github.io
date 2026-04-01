@@ -70,14 +70,14 @@ export function Hero() {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white mb-6 tracking-tight"
         >
-          <span className="block">Станислав</span>
+          <span className="block">Васильев</span>
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.8 }}
             className="block text-gradient-purple mt-2"
           >
-            Васильев
+            Станислав
           </motion.span>
         </motion.h1>
 
@@ -89,7 +89,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel mb-10"
         >
           <Rocket className="w-4 h-4 text-purple-400" />
-          <span className="text-purple-100/80 text-sm">5 лет • Разработка ПО для космоса</span>
+          <span className="text-purple-100/80 text-sm">5 лет • Разработки ПО под заказ</span>
         </motion.div>
 
         {/* Tech stack icons */}
@@ -122,7 +122,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

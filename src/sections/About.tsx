@@ -4,22 +4,22 @@ import { Briefcase, Rocket, MapPin, Calendar, Star } from 'lucide-react';
 
 const experiences = [
   {
-    period: '2022 — настоящее время',
-    role: 'Senior Python Developer',
+    period: '2025 — настоящее время',
+    role: 'Инженер-программист',
     company: 'Роскосмос',
-    description: 'Разработка систем телеметрии, обработка данных со спутников в реальном времени',
+    description: 'Разработка программного обеспечения для ракет и спутников',
+  },
+  {
+    period: '2022 — 2025',
+    role: 'Python Backend Developer',
+    company: 'Фриланс',
+    description: 'Фриланс, разработка сложных web-сервисов, тг-ботов с ИИ',
   },
   {
     period: '2020 — 2022',
-    role: 'Middle Python Developer',
-    company: 'НПО им. С.А. Лавочкина',
-    description: 'Backend для систем мониторинга космических аппаратов',
-  },
-  {
-    period: '2019 — 2020',
-    role: 'Junior Python Developer',
-    company: 'Космический центр "Восточный"',
-    description: 'Разработка внутренних инструментов для наземных служб',
+    role: 'Инженер Конструктор',
+    company: '"Туполев"',
+    description: 'Разработка конструкторской документации для различных летательных аппаратов',
   },
 ];
 
@@ -66,7 +66,7 @@ export function About() {
             <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Обо мне</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-            Пять лет в <span className="text-gradient-purple">космосе</span>
+            Пять лет в <span className="text-gradient-purple">разработке</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
             Разрабатываю программное обеспечение для космической отрасли. 
@@ -83,10 +83,10 @@ export function About() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
         >
           {[
-            { value: '5+', label: 'Лет в космосе', icon: Calendar },
-            { value: '10+', label: 'Спутников', icon: Star },
-            { value: '3', label: 'Космодрома', icon: MapPin },
-            { value: '50+', label: 'ТБ данных/день', icon: Briefcase },
+            { value: '5+', label: 'Лет в разработке', icon: Calendar },
+            { value: '10+', label: 'Проектов', icon: Star },
+            { value: '1', label: 'Спутник', icon: MapPin },
+            { value: '∞', label: 'ТБ данных', icon: Briefcase },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
