@@ -12,7 +12,7 @@ export function Hero() {
         className="absolute inset-0 z-0"
       >
         <img
-          src="/hero-bg.jpg"
+          src="hero-bg.jpg"
           alt="Mission control center"
           className="w-full h-full object-cover"
         />
