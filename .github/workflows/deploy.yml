@@ -36,7 +36,9 @@ jobs:
       - name: Build
         run: npm run build
       - name: Copy images to dist
-        run: cp public/*.jpg dist/ 2>/dev/null || true
+        run: |
+          cp -r public/*.jpg dist/ 2>/dev/null || true
+          ls -la dist/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
