@@ -79,20 +79,14 @@ export function Projects() {
                   <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center">
                     <project.icon className="w-6 h-6 text-purple-400/70" />
                   </div>
-                  <div className="flex gap-2">
-                    <a 
-                      href={project.github}
-                      className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    >
-                      <Github className="w-4 h-4 text-white/50" />
-                    </a>
-                    <a 
-                      href={project.link}
-                      className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4 text-white/50" />
-                    </a>
-                  </div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-white/50" />
+                  </a>
                 </div>
 
                 {/* Title */}
