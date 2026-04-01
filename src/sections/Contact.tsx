@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { 
-  Mail, MessageCircle, Github, Linkedin, 
+  Mail, MessageCircle, Github, Phone, 
   MapPin, Copy, Check, Rocket 
 } from 'lucide-react';
 
@@ -9,30 +9,30 @@ const contacts = [
   {
     icon: MessageCircle,
     label: 'Telegram',
-    value: '@stas_vasiliev',
-    link: 'https://t.me/stas_vasiliev',
+    value: '@Luminist',
+    link: 'https://t.me/Luminist',
     color: 'from-blue-500/20 to-cyan-500/20',
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'stanislav@roscosmos.dev',
-    link: 'mailto:stanislav@roscosmos.dev',
+    value: 'uperman5@yandex.ru',
+    link: 'mailto:uperman5@yandex.ru',
     color: 'from-purple-500/20 to-fuchsia-500/20',
   },
   {
     icon: Github,
     label: 'GitHub',
-    value: 'github.com/stas-vasiliev',
-    link: 'https://github.com/stas-vasiliev',
+    value: 'github.com/LuministRU',
+    link: 'https://github.com/LuministRU',
     color: 'from-violet-500/20 to-purple-500/20',
   },
   {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/stas-vasiliev',
-    link: 'https://linkedin.com/in/stas-vasiliev',
-    color: 'from-indigo-500/20 to-blue-500/20',
+    icon: Phone,
+    label: 'Телефон',
+    value: '+79151052680',
+    link: 'tel:+79151052680',
+    color: 'from-green-500/20 to-emerald-500/20',
   },
 ];
 
@@ -90,7 +90,7 @@ export function Contact() {
             Давайте <span className="text-gradient-purple">свяжемся</span>
           </h2>
           <p className="text-lg text-white/60 max-w-xl mx-auto">
-            Открыт к предложениям о работе в космической отрасли и интересным проектам
+            Открыт к предложениям о разработке в любых отраслях и интересным проектам
           </p>
         </motion.div>
 
@@ -169,7 +169,7 @@ export function Contact() {
             </div>
             
             <div className="text-white/30 text-sm">
-              © 2024 • До звёзд и обратно
+              © 2026 • До звёзд и обратно
             </div>
           </div>
         </motion.div>
