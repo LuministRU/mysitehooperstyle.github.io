@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Music, Globe, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Music, ArrowUpRight } from 'lucide-react';
 
 const projects = [
   {
@@ -10,15 +10,6 @@ const projects = [
     metrics: { value: '10+', label: 'филиалов' },
     icon: Music,
     link: 'http://velvetsvoboda.ru/',
-    github: '#',
-  },
-  {
-    title: 'БитБоксАкадемия',
-    description: 'Освой искусство ритма и звука. Интерактивные курсы от лучших битбоксеров мира для любого уровня подготовки — от новичка до профи.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'React'],
-    metrics: { value: '1', label: 'сайт' },
-    icon: Globe,
-    link: 'https://upright-lynx-1.10web.cloud/',
     github: '#',
   },
 ];
