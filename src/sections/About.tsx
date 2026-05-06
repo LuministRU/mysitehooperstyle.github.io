@@ -30,7 +30,7 @@ export function About() {
   return (
     <section 
       ref={ref}
-      className="relative min-h-screen w-full py-24 overflow-hidden"
+      className="relative min-h-screen w-full py-16 sm:py-24 overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 z-0">
@@ -44,7 +44,7 @@ export function About() {
       </div>
 
       {/* Purple light effect */}
-      <div className="absolute top-0 left-[25%] w-[50%] h-[60%] pointer-events-none z-10" aria-hidden="true">
+      <div className="absolute top-0 left-[25%] w-[50%] h-[60%] pointer-events-none z-10 hidden sm:block" aria-hidden="true">
         <div 
           className="w-full h-full animate-light-beam"
           style={{
@@ -60,16 +60,16 @@ export function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
-            <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Обо мне</span>
+          <div className="flex items-center gap-3 sm:gap-4 mb-4">
+            <span className="w-12 sm:w-16 h-px bg-purple-400/50" aria-hidden="true" />
+            <span className="text-purple-200/60 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase">Обо мне</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 sm:mb-6">
             Пять лет в <span className="text-gradient-purple">разработке</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl leading-[1.7]">
+          <p className="text-base sm:text-lg text-white/60 max-w-2xl leading-[1.7]">
             Разрабатываю программное обеспечение для космической отрасли. 
             Специализируюсь на обработке телеметрии, системах мониторинга и высоконагруженных API 
             для спутниковых данных.
@@ -81,7 +81,7 @@ export function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-16"
         >
           {[
             { value: '5+', label: 'Лет в разработке', icon: Calendar },
@@ -94,11 +94,11 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 + index * 0.08, ease: [0.23, 1, 0.32, 1] }}
-              className="glass-card p-6 text-center"
+              className="glass-card p-4 sm:p-6 text-center"
             >
-              <stat.icon className="w-5 h-5 text-purple-400/60 mx-auto mb-3" />
-              <div className="text-3xl md:text-4xl font-serif text-white mb-1">{stat.value}</div>
-              <div className="text-sm text-white/50">{stat.label}</div>
+              <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400/60 mx-auto mb-2 sm:mb-3" />
+              <div className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-1">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -109,27 +109,27 @@ export function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
         >
-          <h3 className="text-2xl font-serif text-white mb-8 flex items-center gap-3">
-            <Rocket className="w-5 h-5 text-purple-400/60" />
+          <h3 className="text-xl sm:text-2xl font-serif text-white mb-6 sm:mb-8 flex items-center gap-3">
+            <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400/60" />
             Опыт работы
           </h3>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.period}
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.5 + index * 0.12, ease: [0.23, 1, 0.32, 1] }}
-                className="glass-card p-6 md:p-8"
+                className="glass-card p-4 sm:p-6 md:p-8"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <div className="text-purple-400/60 text-sm font-mono mb-2">{exp.period}</div>
-                    <h4 className="text-xl text-white font-medium mb-1">{exp.role}</h4>
-                    <div className="text-white/50">{exp.company}</div>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 sm:gap-4">
+                  <div className="min-w-0">
+                    <div className="text-purple-400/60 text-xs sm:text-sm font-mono mb-1 sm:mb-2">{exp.period}</div>
+                    <h4 className="text-lg sm:text-xl text-white font-medium mb-0.5 sm:mb-1">{exp.role}</h4>
+                    <div className="text-white/50 text-sm">{exp.company}</div>
                   </div>
-                  <p className="text-white/40 text-sm max-w-md leading-relaxed">{exp.description}</p>
+                  <p className="text-white/40 text-xs sm:text-sm max-w-md leading-relaxed">{exp.description}</p>
                 </div>
               </motion.div>
             ))}

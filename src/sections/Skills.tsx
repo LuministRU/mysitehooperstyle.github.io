@@ -70,10 +70,10 @@ export function Skills() {
   return (
     <section 
       ref={ref}
-      className="relative min-h-screen w-full py-24 overflow-hidden bg-[#0a0a12]"
+      className="relative min-h-screen w-full py-16 sm:py-24 overflow-hidden bg-[#0a0a12]"
     >
       {/* Geometric background pattern */}
-      <div className="absolute inset-0 z-0 opacity-30" aria-hidden="true">
+      <div className="absolute inset-0 z-0 opacity-30 hidden sm:block" aria-hidden="true">
         <div className="absolute top-[10%] left-[5%] w-[30%] h-[40%] border border-purple-400/10" />
         <div className="absolute top-[20%] right-[10%] w-[25%] h-[35%] border border-purple-400/10" />
         <div className="absolute bottom-[15%] left-[15%] w-[20%] h-[30%] border border-purple-400/10" />
@@ -89,42 +89,42 @@ export function Skills() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
-            <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Навыки</span>
-            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4">
+            <span className="w-12 sm:w-16 h-px bg-purple-400/50" aria-hidden="true" />
+            <span className="text-purple-200/60 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase">Навыки</span>
+            <span className="w-12 sm:w-16 h-px bg-purple-400/50" aria-hidden="true" />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 sm:mb-6">
             Технологический <span className="text-gradient-purple">стек</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
             Инструменты для разработки космического ПО
           </p>
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + catIndex * 0.1, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-              className="glass-card p-6"
+              className="glass-card p-4 sm:p-6"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-purple-400/10 flex items-center justify-center">
-                  <category.icon className="w-5 h-5 text-purple-400/70" />
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-purple-400/10 flex items-center justify-center">
+                  <category.icon className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400/70" />
                 </div>
-                <h3 className="text-lg font-medium text-white">{category.title}</h3>
+                <h3 className="text-base sm:text-lg font-medium text-white">{category.title}</h3>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-1">
+                    <div className="flex justify-between text-xs sm:text-sm mb-1">
                       <span className="text-white/70">{skill.name}</span>
                       <span className="text-white/40">{skill.level}%</span>
                     </div>

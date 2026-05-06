@@ -69,7 +69,7 @@ export function Contact() {
   return (
     <section 
       ref={ref}
-      className="relative min-h-screen w-full py-24 overflow-hidden flex items-center"
+      className="relative min-h-screen w-full py-16 sm:py-24 overflow-hidden flex items-center"
     >
       {/* Background */}
       <div className="absolute inset-0 z-0">
@@ -83,7 +83,7 @@ export function Contact() {
       </div>
 
       {/* Glowing Earth effect */}
-      <div className="absolute right-[20%] top-[20%] w-[300px] h-[300px] pointer-events-none z-10" aria-hidden="true">
+      <div className="absolute right-[20%] top-[20%] w-[300px] h-[300px] pointer-events-none z-10 hidden sm:block" aria-hidden="true">
         <div 
           className="w-full h-full animate-pulse-glow"
           style={{
@@ -93,23 +93,23 @@ export function Contact() {
         />
       </div>
 
-      <div className="relative z-20 section-padding max-w-4xl mx-auto w-full">
+      <div className="relative z-20 section-padding max-w-4xl mx-auto w-full px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
-            <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Контакты</span>
-            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4">
+            <span className="w-12 sm:w-16 h-px bg-purple-400/50" aria-hidden="true" />
+            <span className="text-purple-200/60 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase">Контакты</span>
+            <span className="w-12 sm:w-16 h-px bg-purple-400/50" aria-hidden="true" />
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 sm:mb-6">
             Давайте <span className="text-gradient-purple">свяжемся</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             Открыт к предложениям о разработке в любых отраслях и интересным проектам
           </p>
         </motion.div>
@@ -119,7 +119,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-10 sm:mb-12"
         >
           {contacts.map((contact, index) => (
             <motion.div
@@ -127,20 +127,20 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 + index * 0.08, ease: [0.23, 1, 0.32, 1] }}
-              className="group glass-card p-5 flex items-center gap-4 hover:bg-white/[0.08] transition-colors duration-200"
+              className="group glass-card p-4 sm:p-5 flex items-center gap-3 sm:gap-4 hover:bg-white/[0.08] transition-colors duration-200"
             >
               <a
                 href={contact.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 flex-grow min-w-0"
+                className="flex items-center gap-3 sm:gap-4 flex-grow min-w-0"
               >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center flex-shrink-0`}>
-                  <contact.icon className="w-5 h-5 text-white/70" />
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center flex-shrink-0`}>
+                  <contact.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{contact.label}</div>
-                  <div className="text-white/80 truncate">{contact.value}</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wider mb-0.5">{contact.label}</div>
+                  <div className="text-white/80 text-sm truncate">{contact.value}</div>
                 </div>
               </a>
               <button
@@ -164,9 +164,9 @@ export function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
-          className="text-center"
+          className="text-center px-2"
         >
-          <div className="inline-flex items-center gap-2 text-white/40 text-sm">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-white/40 text-xs sm:text-sm">
             <MapPin className="w-4 h-4" />
             <span>Москва • Космодром Байконур • Космодром Восточный</span>
           </div>
@@ -177,20 +177,20 @@ export function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
-          className="mt-24 pt-8 border-t border-white/10"
+          className="mt-16 sm:mt-24 pt-6 sm:pt-8 border-t border-white/10"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400/30 to-fuchsia-500/30 flex items-center justify-center">
                 <Rocket className="w-5 h-5 text-purple-300" />
               </div>
-              <div>
+              <div className="text-center sm:text-left">
                 <div className="text-white font-medium">Станислав Васильев</div>
                 <div className="text-white/40 text-sm">Python Developer • Роскосмос</div>
               </div>
             </div>
             
-            <div className="text-white/30 text-sm">
+            <div className="text-white/30 text-xs sm:text-sm">
               © 2026 • До звёзд и обратно
             </div>
           </div>
