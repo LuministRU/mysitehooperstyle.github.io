@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { 
   Mail, MessageCircle, Github, Phone, 
   MapPin, Copy, Check, Rocket 
@@ -41,11 +41,30 @@ export function Contact() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [copied, setCopied] = useState<string | null>(null);
 
-  const handleCopy = (value: string, label: string) => {
-    navigator.clipboard.writeText(value);
-    setCopied(label);
-    setTimeout(() => setCopied(null), 2000);
-  };
+  const handleCopy = useCallback(async (value: string, label: string) => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(value);
+        setCopied(label);
+        setTimeout(() => setCopied(null), 2000);
+      } else {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = value;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        setCopied(label);
+        setTimeout(() => setCopied(null), 2000);
+      }
+    } catch {
+      // Silently fail
+    }
+  }, []);
 
   return (
     <section 
@@ -56,14 +75,15 @@ export function Contact() {
       <div className="absolute inset-0 z-0">
         <img
           src="contact-bg.jpg"
-          alt="Space museum interior"
+          alt=""
           className="w-full h-full object-cover opacity-40"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12] via-[#0a0a12]/90 to-[#0a0a12]" />
       </div>
 
       {/* Glowing Earth effect */}
-      <div className="absolute right-[20%] top-[20%] w-[300px] h-[300px] pointer-events-none z-10">
+      <div className="absolute right-[20%] top-[20%] w-[300px] h-[300px] pointer-events-none z-10" aria-hidden="true">
         <div 
           className="w-full h-full animate-pulse-glow"
           style={{
@@ -78,18 +98,18 @@ export function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-4 mb-4">
-            <span className="w-16 h-px bg-purple-400/50" />
+            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
             <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Контакты</span>
-            <span className="w-16 h-px bg-purple-400/50" />
+            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
             Давайте <span className="text-gradient-purple">свяжемся</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-xl mx-auto">
+          <p className="text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             Открыт к предложениям о разработке в любых отраслях и интересным проектам
           </p>
         </motion.div>
@@ -98,34 +118,36 @@ export function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12"
         >
           {contacts.map((contact, index) => (
-            <motion.a
+            <motion.div
               key={contact.label}
-              href={contact.link}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              className="group glass-card p-5 flex items-center gap-4 hover:bg-white/[0.08] transition-all"
+              transition={{ delay: 0.3 + index * 0.08, ease: [0.23, 1, 0.32, 1] }}
+              className="group glass-card p-5 flex items-center gap-4 hover:bg-white/[0.08] transition-colors duration-200"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center flex-shrink-0`}>
-                <contact.icon className="w-5 h-5 text-white/70" />
-              </div>
-              <div className="flex-grow min-w-0">
-                <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{contact.label}</div>
-                <div className="text-white/80 truncate">{contact.value}</div>
-              </div>
+              <a
+                href={contact.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 flex-grow min-w-0"
+              >
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${contact.color} flex items-center justify-center flex-shrink-0`}>
+                  <contact.icon className="w-5 h-5 text-white/70" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{contact.label}</div>
+                  <div className="text-white/80 truncate">{contact.value}</div>
+                </div>
+              </a>
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  handleCopy(contact.value, contact.label);
-                }}
-                className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors flex-shrink-0"
+                type="button"
+                onClick={() => handleCopy(contact.value, contact.label)}
+                aria-label={`Скопировать ${contact.label}`}
+                className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors duration-150 flex-shrink-0"
               >
                 {copied === contact.label ? (
                   <Check className="w-4 h-4 text-green-400" />
@@ -133,7 +155,7 @@ export function Contact() {
                   <Copy className="w-4 h-4 text-white/40" />
                 )}
               </button>
-            </motion.a>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -151,7 +173,7 @@ export function Contact() {
         </motion.div>
 
         {/* Footer */}
-        <motion.div
+        <motion.footer
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
@@ -172,7 +194,7 @@ export function Contact() {
               © 2026 • До звёзд и обратно
             </div>
           </div>
-        </motion.div>
+        </motion.footer>
       </div>
     </section>
   );

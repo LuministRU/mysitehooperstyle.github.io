@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 interface Particle {
   x: number;
@@ -9,10 +9,27 @@ interface Particle {
   opacity: number;
 }
 
+function throttle(fn: () => void, wait: number) {
+  let time = Date.now();
+  return () => {
+    if (Date.now() - time >= wait) {
+      time = Date.now();
+      fn();
+    }
+  };
+}
+
 export function LightEffects() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number | null>(null);
+
+  const resizeCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,12 +38,9 @@ export function LightEffects() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    const throttledResize = throttle(resizeCanvas, 200);
+    window.addEventListener('resize', throttledResize);
 
     // Initialize particles (cosmic dust)
     const particleCount = 60;
@@ -64,18 +78,19 @@ export function LightEffects() {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', throttledResize);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [resizeCanvas]);
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-50"
       style={{ mixBlendMode: 'screen' }}
+      aria-hidden="true"
     />
   );
 }

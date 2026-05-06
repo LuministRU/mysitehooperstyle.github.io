@@ -36,14 +36,15 @@ export function About() {
       <div className="absolute inset-0 z-0">
         <img
           src="about-bg.jpg"
-          alt="Observatory interior"
+          alt=""
           className="w-full h-full object-cover opacity-40"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12] via-[#0a0a12]/90 to-[#0a0a12]" />
       </div>
 
       {/* Purple light effect */}
-      <div className="absolute top-0 left-[25%] w-[50%] h-[60%] pointer-events-none z-10">
+      <div className="absolute top-0 left-[25%] w-[50%] h-[60%] pointer-events-none z-10" aria-hidden="true">
         <div 
           className="w-full h-full animate-light-beam"
           style={{
@@ -58,17 +59,17 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <span className="w-16 h-px bg-purple-400/50" />
+            <span className="w-16 h-px bg-purple-400/50" aria-hidden="true" />
             <span className="text-purple-200/60 text-sm tracking-[0.3em] uppercase">Обо мне</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
             Пять лет в <span className="text-gradient-purple">разработке</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl leading-relaxed">
+          <p className="text-lg text-white/60 max-w-2xl leading-[1.7]">
             Разрабатываю программное обеспечение для космической отрасли. 
             Специализируюсь на обработке телеметрии, системах мониторинга и высоконагруженных API 
             для спутниковых данных.
@@ -79,7 +80,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
         >
           {[
@@ -92,7 +93,7 @@ export function About() {
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 + index * 0.1 }}
+              transition={{ delay: 0.3 + index * 0.08, ease: [0.23, 1, 0.32, 1] }}
               className="glass-card p-6 text-center"
             >
               <stat.icon className="w-5 h-5 text-purple-400/60 mx-auto mb-3" />
@@ -106,7 +107,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
         >
           <h3 className="text-2xl font-serif text-white mb-8 flex items-center gap-3">
             <Rocket className="w-5 h-5 text-purple-400/60" />
@@ -119,7 +120,7 @@ export function About() {
                 key={exp.period}
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.5 + index * 0.15 }}
+                transition={{ delay: 0.5 + index * 0.12, ease: [0.23, 1, 0.32, 1] }}
                 className="glass-card p-6 md:p-8"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -128,7 +129,7 @@ export function About() {
                     <h4 className="text-xl text-white font-medium mb-1">{exp.role}</h4>
                     <div className="text-white/50">{exp.company}</div>
                   </div>
-                  <p className="text-white/40 text-sm max-w-md">{exp.description}</p>
+                  <p className="text-white/40 text-sm max-w-md leading-relaxed">{exp.description}</p>
                 </div>
               </motion.div>
             ))}

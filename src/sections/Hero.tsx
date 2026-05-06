@@ -1,27 +1,37 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Rocket, Satellite, Radio } from 'lucide-react';
+import { useMemo } from 'react';
 
 export function Hero() {
+  const stars = useMemo(() => {
+    return Array.from({ length: 20 }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+    }));
+  }, []);
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background Image */}
       <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
+        initial={{ scale: 1.05, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: 'easeOut' }}
+        transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="absolute inset-0 z-0"
       >
         <img
           src="hero-bg.jpg"
-          alt="Mission control center"
+          alt=""
           className="w-full h-full object-cover"
+          aria-hidden="true"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/70 via-[#0a0a12]/50 to-[#0a0a12]" />
       </motion.div>
 
       {/* Purple light beam effect */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none" aria-hidden="true">
         <div 
           className="absolute top-0 right-[15%] w-[50%] h-full animate-light-beam"
           style={{
@@ -33,15 +43,15 @@ export function Hero() {
       </div>
 
       {/* Floating stars */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+      <div className="absolute inset-0 z-10 pointer-events-none" aria-hidden="true">
+        {stars.map((star, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
+              left: star.left,
+              top: star.top,
+              animationDelay: star.delay,
             }}
           />
         ))}
@@ -51,30 +61,30 @@ export function Hero() {
       <div className="relative z-20 text-center section-padding max-w-5xl mx-auto">
         {/* Subtitle */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="flex items-center justify-center gap-3 mb-6"
         >
-          <span className="w-12 h-px bg-purple-400/50" />
+          <span className="w-12 h-px bg-purple-400/50" aria-hidden="true" />
           <span className="text-purple-200/70 text-sm tracking-[0.3em] uppercase font-light">
             Роскосмос • Python Developer
           </span>
-          <span className="w-12 h-px bg-purple-400/50" />
+          <span className="w-12 h-px bg-purple-400/50" aria-hidden="true" />
         </motion.div>
 
         {/* Main Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white mb-6 tracking-tight"
         >
           <span className="block">Васильев</span>
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
+            transition={{ delay: 0.9, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="block text-gradient-purple mt-2"
           >
             Станислав
@@ -83,9 +93,9 @@ export function Hero() {
 
         {/* Experience badge */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.3, duration: 0.6, type: 'spring' }}
+          transition={{ delay: 1.1, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-panel mb-10"
         >
           <Rocket className="w-4 h-4 text-purple-400" />
@@ -96,7 +106,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.6 }}
+          transition={{ delay: 1.3, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
           className="flex items-center justify-center gap-8 mb-16"
         >
           {[
@@ -108,8 +118,8 @@ export function Hero() {
               key={tech.label}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6 + index * 0.1 }}
-              className="flex flex-col items-center gap-2 text-white/40 hover:text-purple-300/70 transition-colors"
+              transition={{ delay: 1.4 + index * 0.08, ease: [0.23, 1, 0.32, 1] }}
+              className="flex flex-col items-center gap-2 text-white/40 hover:text-purple-300/70 transition-colors duration-200"
             >
               <tech.icon className="w-6 h-6" />
               <span className="text-xs tracking-wider">{tech.label}</span>
@@ -121,7 +131,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.8 }}
+          transition={{ delay: 1.6, duration: 0.6 }}
           className="absolute bottom-4 left-1/2 -translate-x-1/2"
         >
           <motion.div
@@ -139,11 +149,11 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
         className="absolute bottom-6 left-6 z-20"
       >
         <div className="flex items-center gap-3 text-white/20 text-xs font-mono">
-          <div className="w-8 h-px bg-white/20" />
+          <div className="w-8 h-px bg-white/20" aria-hidden="true" />
           <span>inspired by Edward Hopper</span>
         </div>
       </motion.div>
@@ -151,12 +161,12 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
         className="absolute top-6 right-6 z-20"
       >
         <div className="flex items-center gap-3 text-white/20 text-xs font-mono">
           <span>Москва • Космодромы РФ</span>
-          <div className="w-8 h-px bg-white/20" />
+          <div className="w-8 h-px bg-white/20" aria-hidden="true" />
         </div>
       </motion.div>
     </section>
